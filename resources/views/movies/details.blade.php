@@ -17,7 +17,9 @@
                 @foreach($movie->genres as $genre)
                     <span class="badge badge-secondary">{{$genre->name}}</span>
                 @endforeach
-                <span class="release-date">Release date: {{\Carbon\Carbon::parse($movie->release_date)->format('jS \\of F Y')}}</span>
+                <div class="alert alert-primary release-date" role="alert">
+                    Release date: {{\Carbon\Carbon::parse($movie->release_date)->format('jS \\of F Y')}}
+                </div>
                 <p style="margin-top: 1em">{{$movie->overview}}</p>
             </div>
         </div>
