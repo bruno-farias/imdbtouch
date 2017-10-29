@@ -12,3 +12,5 @@
 */
 
 Route::get('/', ['as' => 'index', 'uses' => 'IndexController@index']);
+
+Route::get('movie/{id}', ['as' => 'movie.detail', 'uses' => 'MoviesController@detail']);

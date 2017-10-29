@@ -14,6 +14,7 @@
 
 <!-- CSS Files -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
 <style>
 
     .navbar {

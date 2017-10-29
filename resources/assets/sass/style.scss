@@ -1,0 +1,27 @@
+// Navbar
+
+.navbar-bg-color {
+  background-color: $default-bg;
+  .navbar-brand, .nav-link {
+    color: #FFFFFF;
+  }
+}
+
+
+// Footer
+
+footer {
+  margin-top: 2em;
+  background-color: $default-bg;
+  color: #FFFFFF;
+}
+
+// General
+.white-text {
+  color: #FFFFFF;
+}
+
+.release-date {
+  float: right;
+  margin-right: 2.5em;
+}
