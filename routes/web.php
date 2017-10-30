@@ -13,4 +13,6 @@
 
 Route::get('/{page?}', ['as' => 'index', 'uses' => 'IndexController@index']);
 
+Route::match(['get', 'post'], 'movie/search/{page?}', ['as' => 'movie.search', 'uses' => 'MoviesController@search']);
+
 Route::get('movie/{id}', ['as' => 'movie.detail', 'uses' => 'MoviesController@detail']);

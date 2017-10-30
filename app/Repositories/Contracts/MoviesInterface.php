@@ -10,4 +10,6 @@ interface MoviesInterface
 
     public function movieDetails(int $id);
 
+    public function search($query, int $page = 1);
+
 }

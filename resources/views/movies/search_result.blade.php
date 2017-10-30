@@ -3,18 +3,18 @@
 @section('content')
 
     @include('structure.page_header', [
-        'title' => 'Upcoming Movies',
-        'content' => "See the next's on Hollywood"
+        'title' => 'Search for: ' . $query,
+        'content' => "Find what you are looking for"
     ])
 
     <div class="album text-muted">
         <div class="container-fluid">
 
-            @include('partials.movie_list', ['movies' => $upcoming])
+            @include('partials.movie_list', ['movies' => $result])
             @include('structure.pagination', [
                 'pages' => $pages,
                 'current' => $current,
-                'route' => 'index'
+                'route' => 'movie.search'
             ])
 
         </div>

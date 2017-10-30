@@ -16,9 +16,9 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        {!! Form::open(['route' => 'movie.search', 'method' => 'POST', 'class' => 'form-inline my-2 my-lg-0']) !!}
+            <input class="form-control mr-sm-2" type="text" name="query" value="{{old('query')}}" required min="3" placeholder="Search" aria-label="Search">
             <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        {!! Form::close() !!}
     </div>
 </nav>
