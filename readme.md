@@ -11,6 +11,30 @@ and productive php framework these days.
 It have a complete ecosystem to create from a basic project to the most complex 
 requirements a piece of cake.
 
+- This project uses dependency injection to decouple and is one form of the broader 
+technique of inversion of control
+    - You can see this on app/Repositories folder, we have an interface and a class
+    that do the implementation of the required methods and api calls;
+    - We bind the interface and concrete class on app/Providers/AppServiceProvider.php file
+    on register method
+    - Once we need to call anything related to movie we simply inject the interface
+    dependency on the desired class, in these project are used on:
+        - app/Http/Controllers/IndexController.php
+        - app/Http/Controllers/MoviesController.php
+
+Example of use of dependency injection
+```php
+    // class variable that will be used 
+    protected $movies;
+
+    // On class constructor we define the dependencies
+    public function __construct(MoviesInterface $movies)
+    {
+        // and here gives the all dependencies from interface to the class var
+        $this->movies = $movies;
+    }
+```    
+
 #### Assumptions
 
 It's important to tell that, since this is a backend oriented test this was made 
@@ -42,4 +66,4 @@ and removed all classes related to frontend to this optional package that provid
 to work with abstraction of Forms (with csrf protection) and HTML.
 
 Sure that this project can be easily made without any of these libs, but all of these
-make us have time to drink coffee, so why not use? 
+make us have time to drink **more** coffee, so why not use? 
