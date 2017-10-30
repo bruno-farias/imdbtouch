@@ -6,7 +6,7 @@
 
 #### A small project to fetch TMDb api data
 
-- [Test Drive Link](https://imdb-touch.herokuapp.com/)
+- [Test Drive Link](https://imdb-touch.herokuapp.com/) (be patient on first run)
 
 #### Architecture:
 - PHP 7.1
