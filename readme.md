@@ -1,5 +1,9 @@
 # IMDB Touch
 
+
+
+[logo]: https://scrutinizer-ci.com/g/bruno-farias/imdbtouch/badges/quality-score.png?b=development
+
 #### A small project to fetch TMDb api data
 
 #### Architecture:

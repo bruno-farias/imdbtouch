@@ -50,7 +50,7 @@ class Movies implements MoviesInterface
     public function search($query, int $page = 1)
     {
         $uri = $this->base_uri . 'search/movie?api_key=' . env('TMDB_APIKEY') . '&language=en-US&query=' . $query .
-            '&page=' . $page .'&include_adult=false';
+            '&page=' . $page . '&include_adult=false';
 
         $res = $this->fetchAPI($uri);
 

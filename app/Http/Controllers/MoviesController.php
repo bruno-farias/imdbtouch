@@ -37,7 +37,7 @@ class MoviesController extends Controller
 
         $res = $this->movies->search($query, $page);
 
-        $pages = range(($page == 1) ? $page : $page -1, ($page == $res->total_pages) ? $page : $res->total_pages);
+        $pages = range(($page == 1) ? $page : $page - 1, ($page == $res->total_pages) ? $page : $res->total_pages);
 
         return view('movies.search_result', [
             'result' => $res->results,

@@ -18,7 +18,7 @@ class IndexController extends Controller
     public function index($page = 1)
     {
 
-        $pages = range(($page == 1) ? $page : $page -1, $page +1);
+        $pages = range(($page == 1) ? $page : $page - 1, $page + 1);
 
         return view('index', [
             'upcoming' => $this->movies->getUpcomingMovies($page),
