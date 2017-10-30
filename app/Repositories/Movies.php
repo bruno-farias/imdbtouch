@@ -14,7 +14,18 @@ class Movies implements MoviesInterface
 
     public function __construct()
     {
-        $this->client = $client = new Client();
+        $this->client = new Client();
+    }
+
+
+    protected function fetchAPI($uri, $method = 'GET')
+    {
+        try {
+            $res = $this->client->request($method, $uri);
+            return \GuzzleHttp\json_decode($res->getBody());
+        } catch (\Exception $exception) {
+            return abort($exception->getCode());
+        }
     }
 
     public function getUpcomingMovies(int $page = 1)
@@ -22,8 +33,7 @@ class Movies implements MoviesInterface
 
         $uri = $this->base_uri . 'movie/upcoming?api_key=' . env('TMDB_APIKEY') . '&language=en-US&page=' . $page;
 
-        $res = $this->client->request('GET', $uri);
-        $res = \GuzzleHttp\json_decode($res->getBody());
+        $res = $this->fetchAPI($uri);
 
         return $res->results;
     }
@@ -32,8 +42,7 @@ class Movies implements MoviesInterface
     {
         $uri = $this->base_uri . 'movie/' . $id . '?api_key=' . env('TMDB_APIKEY') . '&language=en-US';
 
-        $res = $this->client->request('GET', $uri);
-        $res = \GuzzleHttp\json_decode($res->getBody());
+        $res = $this->fetchAPI($uri);
 
         return $res;
     }
@@ -43,8 +52,7 @@ class Movies implements MoviesInterface
         $uri = $this->base_uri . 'search/movie?api_key=' . env('TMDB_APIKEY') . '&language=en-US&query=' . $query .
             '&page=' . $page .'&include_adult=false';
 
-        $res = $this->client->request('GET', $uri);
-        $res = \GuzzleHttp\json_decode($res->getBody());
+        $res = $this->fetchAPI($uri);
 
         return $res;
     }
