@@ -9,7 +9,6 @@ use GuzzleHttp\Client;
 class Movies implements MoviesInterface
 {
 
-    protected $base_uri = 'https://api.themoviedb.org/3/';
     protected $client;
 
     public function __construct()
@@ -31,7 +30,7 @@ class Movies implements MoviesInterface
     public function getUpcomingMovies(int $page = 1)
     {
 
-        $uri = $this->base_uri . 'movie/upcoming?api_key=' . env('TMDB_APIKEY') . '&language=en-US&page=' . $page;
+        $uri = env('TMDB_BASE_URI') . 'movie/upcoming?api_key=' . env('TMDB_APIKEY') . '&language=en-US&page=' . $page;
 
         $res = $this->fetchAPI($uri);
 
@@ -40,7 +39,7 @@ class Movies implements MoviesInterface
 
     public function movieDetails(int $id)
     {
-        $uri = $this->base_uri . 'movie/' . $id . '?api_key=' . env('TMDB_APIKEY') . '&language=en-US';
+        $uri = env('TMDB_BASE_URI') . 'movie/' . $id . '?api_key=' . env('TMDB_APIKEY') . '&language=en-US';
 
         $res = $this->fetchAPI($uri);
 
@@ -49,7 +48,7 @@ class Movies implements MoviesInterface
 
     public function search($query, int $page = 1)
     {
-        $uri = $this->base_uri . 'search/movie?api_key=' . env('TMDB_APIKEY') . '&language=en-US&query=' . $query .
+        $uri = env('TMDB_BASE_URI') . 'search/movie?api_key=' . env('TMDB_APIKEY') . '&language=en-US&query=' . $query .
             '&page=' . $page . '&include_adult=false';
 
         $res = $this->fetchAPI($uri);

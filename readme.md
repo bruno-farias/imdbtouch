@@ -53,6 +53,7 @@ api of the application.
 1. Clone this repo on your local environment
 2. Make a copy of the file .env.example as .env and add those keys:
     - TMDB_APIKEY=1f54bd990f1cdfb230adb312546d765d
+    - TMDB_BASE_URI=https://api.themoviedb.org/3/
     - HTTPS=false (or true if app are on an https)
 3. add this key to APP_KEY on your .env file:
     - base64:KBC4HVVpspBnIlVg8PoduM98eSYhzwRLi97RE6Vf9sA=          
