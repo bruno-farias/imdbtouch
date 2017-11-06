@@ -8,7 +8,9 @@
             @if($page > ($current + 10))
                 @continue
             @else
-                <li class="page-item"><a class="page-link" href="{{route($route, ['page' => $page])}}">{{$page}}</a></li>
+                <li class="page-item @if($current == $page) disabled @endif">
+                    <a class="page-link" href="{{route($route, ['page' => $page])}}">{{$page}}</a>
+                </li>
             @endif
         @endforeach
         <li class="page-item">
