@@ -27,33 +27,43 @@ class Movies implements MoviesInterface
         }
     }
 
+    protected function createUri(string $method, $query = null, $page = null, $lang = 'en-US', $adult = false)
+    {
+        $baseUri = env('TMDB_BASE_URI');
+        $key = env('TMDB_APIKEY');
+
+        $res = "$baseUri$method?api_key=$key&language=$lang";
+
+        if (!is_null($query)) {
+            $res .= "&query=$query";
+        }
+
+        if (!is_null($page)) {
+            $res .= "&page=$page";
+        }
+
+        $adult = ($adult) ? 'true' : 'false';
+
+        $res .= "&include_adult=$adult";
+
+        return $res;
+    }
+
     public function getUpcomingMovies(int $page = 1)
     {
-
-        $uri = env('TMDB_BASE_URI') . 'movie/upcoming?api_key=' . env('TMDB_APIKEY') . '&language=en-US&page=' . $page;
-
-        $res = $this->fetchAPI($uri);
+        $res = $this->fetchAPI($this->createUri('movie/upcoming', null, $page));
 
         return $res->results;
     }
 
     public function movieDetails(int $id)
     {
-        $uri = env('TMDB_BASE_URI') . 'movie/' . $id . '?api_key=' . env('TMDB_APIKEY') . '&language=en-US';
-
-        $res = $this->fetchAPI($uri);
-
-        return $res;
+        return $this->fetchAPI($this->createUri('movie/' . $id));
     }
 
     public function search($query, int $page = 1)
     {
-        $uri = env('TMDB_BASE_URI') . 'search/movie?api_key=' . env('TMDB_APIKEY') . '&language=en-US&query=' . $query .
-            '&page=' . $page . '&include_adult=false';
-
-        $res = $this->fetchAPI($uri);
-
-        return $res;
+        return $this->fetchAPI($this->createUri('search/movie', $query, $page, 'en-US', true));
     }
 
 
