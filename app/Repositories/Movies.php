@@ -63,7 +63,7 @@ class Movies implements MoviesInterface
 
     public function search($query, int $page = 1)
     {
-        return $this->fetchAPI($this->createUri('search/movie', $query, $page, 'en-US', true));
+        return $this->fetchAPI($this->createUri('search/movie', $query, $page, 'en-US', false));
     }
 
 
